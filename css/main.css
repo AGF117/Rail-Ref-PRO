@@ -1,0 +1,343 @@
+/* ==========================================
+   RailRef PRO
+   Main CSS v0.2 Alpha
+========================================== */
+
+:root{
+
+    --primary:#ff8c00;
+    --primary-dark:#d97300;
+
+    --background:#111827;
+    --surface:#1f2937;
+    --surface-light:#374151;
+
+    --text:#f9fafb;
+    --text-secondary:#9ca3af;
+
+    --success:#22c55e;
+    --danger:#ef4444;
+
+    --radius:18px;
+
+    --shadow:0 8px 24px rgba(0,0,0,.25);
+
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Inter,Roboto,Arial,sans-serif;
+
+    background:var(--background);
+
+    color:var(--text);
+
+    min-height:100vh;
+
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.topbar{
+
+    height:72px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 20px;
+
+    background:var(--surface);
+
+    box-shadow:var(--shadow);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+}
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.brand h1{
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+
+.brand span{
+
+    color:var(--primary);
+
+}
+
+/* ===========================
+   SEARCH
+=========================== */
+
+.search-section{
+
+    padding:20px;
+
+}
+
+.search-section input{
+
+    width:100%;
+
+    height:54px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:var(--surface);
+
+    color:white;
+
+    padding:0 18px;
+
+    font-size:16px;
+
+    outline:none;
+
+    transition:.2s;
+
+}
+
+.search-section input:focus{
+
+    border:2px solid var(--primary);
+
+}
+
+/* ===========================
+   QUICK MENU
+=========================== */
+
+.quick-actions{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:16px;
+
+    padding:0 20px;
+
+}
+
+.quick-card{
+
+    background:var(--surface);
+
+    border:none;
+
+    border-radius:var(--radius);
+
+    padding:22px;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    box-shadow:var(--shadow);
+
+}
+
+.quick-card:hover{
+
+    transform:translateY(-4px);
+
+    background:var(--surface-light);
+
+}
+
+/* ===========================
+   RESULTS
+=========================== */
+
+.results-section{
+
+    padding:24px 20px 120px;
+
+}
+
+.results-section h2{
+
+    margin-bottom:18px;
+
+}
+
+.result-card{
+
+    background:var(--surface);
+
+    border-radius:var(--radius);
+
+    padding:18px;
+
+    margin-bottom:16px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+    box-shadow:var(--shadow);
+
+}
+
+.result-card:hover{
+
+    transform:scale(1.02);
+
+}
+
+.result-card h3{
+
+    color:var(--primary);
+
+    margin-bottom:6px;
+
+}
+
+.result-card p{
+
+    color:var(--text-secondary);
+
+}
+
+/* ===========================
+   DETAIL PANEL
+=========================== */
+
+.detail-panel{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#000c;
+
+    display:none;
+
+}
+
+.detail-panel.open{
+
+    display:flex;
+
+}
+
+.detail-content{
+
+    margin:auto;
+
+    width:min(700px,95%);
+
+    background:var(--surface);
+
+    border-radius:22px;
+
+    padding:30px;
+
+}
+
+/* ===========================
+   BOTTOM NAV
+=========================== */
+
+.bottom-nav{
+
+    position:fixed;
+
+    bottom:0;
+
+    width:100%;
+
+    height:72px;
+
+    background:var(--surface);
+
+    display:flex;
+
+    justify-content:space-around;
+
+    align-items:center;
+
+    box-shadow:0 -5px 20px rgba(0,0,0,.25);
+
+}
+
+.bottom-nav button{
+
+    background:none;
+
+    border:none;
+
+    color:var(--text-secondary);
+
+    font-size:14px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:4px;
+
+}
+
+.bottom-nav button.active{
+
+    color:var(--primary);
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:700px){
+
+.brand h1{
+
+    font-size:20px;
+
+}
+
+.quick-actions{
+
+    grid-template-columns:1fr 1fr;
+
+}
+
+  }
