@@ -13,7 +13,7 @@ const resultsContainer = document.getElementById("resultsContainer");
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    await loadDatabase();
+    await DB.load();
 
     searchInput.addEventListener("input", handleSearch);
 
