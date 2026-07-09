@@ -5,124 +5,68 @@
 ===========================================
 */
 
-let database = [];
-let filteredResults = [];
-
 const searchInput = document.getElementById("searchInput");
 const resultsContainer = document.getElementById("resultsContainer");
 
 document.addEventListener("DOMContentLoaded", async () => {
 
+    // Cargar la base de datos
     await DB.load();
 
+    // Activar buscador
     searchInput.addEventListener("input", handleSearch);
+
+    // Mensaje inicial
+    resultsContainer.innerHTML = `
+        <div class="empty">
+            Introduce una referencia para comenzar.
+        </div>
+    `;
 
 });
 
-async function loadDatabase(){
+function handleSearch() {
 
-    try{
+    const resultados = DB.search(searchInput.value);
 
-        const response = await fetch("data/railref_database_app_v2.json");
-
-        database = await response.json();
-
-        console.log("Base de datos cargada:", database.length);
-
-    }
-    catch(error){
-
-        console.error(error);
-
-        resultsContainer.innerHTML=`
-            <div class="error">
-                No se pudo cargar la base de datos.
-            </div>
-        `;
-
-    }
+    renderResults(resultados);
 
 }
 
-function handleSearch(){
+function renderResults(lista) {
 
-    const text = searchInput.value
-        .trim()
-        .toLowerCase();
+    if (lista.length === 0) {
 
-    if(text===""){
-
-        resultsContainer.innerHTML=`
-            <div class="empty">
-                Introduce una referencia...
-            </div>
-        `;
-
-        return;
-
-    }
-
-    filteredResults = database.filter(item=>{
-
-        return (
-
-            (item.referencia || "")
-            .toLowerCase()
-            .includes(text)
-
-            ||
-
-            (item.descripcion || "")
-            .toLowerCase()
-            .includes(text)
-
-            ||
-
-            (item.fabricante || "")
-            .toLowerCase()
-            .includes(text)
-
-        );
-
-    });
-
-    renderResults(filteredResults);
-
-}
-
-function renderResults(list){
-
-    if(list.length===0){
-
-        resultsContainer.innerHTML=`
+        resultsContainer.innerHTML = `
             <div class="empty">
                 No se encontraron resultados.
             </div>
         `;
 
         return;
-
     }
 
-    resultsContainer.innerHTML="";
+    resultsContainer.innerHTML = "";
 
-    list.forEach(item=>{
+    lista.forEach(item => {
 
-        const card=document.createElement("div");
+        const card = document.createElement("div");
 
-        card.className="result-card";
+        card.className = "result-card";
 
-        card.innerHTML=`
+        card.innerHTML = `
+            <h3>${item.referencia}</h3>
 
-            <h3>${item.referencia ?? "-"}</h3>
+            <p>${item.descripcion}</p>
 
-            <p>${item.descripcion ?? ""}</p>
+            <small>🏭 ${item.fabricante}</small><br>
 
-            <small>${item.fabricante ?? ""}</small>
+            <small>🚂 ${item.compatible.join(", ")}</small><br>
 
+            <small>📄 ${item.lamina}</small>
         `;
 
-        card.addEventListener("click",()=>{
+        card.addEventListener("click", () => {
 
             showDetail(item);
 
@@ -131,9 +75,5 @@ function renderResults(list){
         resultsContainer.appendChild(card);
 
     });
-
-}
-
-function showDetail(item){
 
 }
