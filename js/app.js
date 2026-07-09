@@ -136,16 +136,4 @@ function renderResults(list){
 
 function showDetail(item){
 
-    alert(
-
-`Referencia: ${item.referencia}
-
-Descripción:
-${item.descripcion}
-
-Fabricante:
-${item.fabricante}`
-
-    );
-
 }
