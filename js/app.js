@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 function handleSearch() {
 
-    const resultados = DB.search(searchInput.value);
+    const resultados = Search.search(searchInput.value);
 
     renderResults(resultados);
 
