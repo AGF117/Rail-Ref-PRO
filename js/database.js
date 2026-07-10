@@ -42,23 +42,34 @@ class RailDatabase {
 
     }
 
-    normalize() {
+   normalize() {
 
-        this.items = this.items.map(item => ({
+    this.items = this.items.map(item => ({
 
-            referencia: item.referencia ?? "",
-            descripcion: item.descripcion ?? "",
-            fabricante: item.fabricante ?? "",
-            categoria: item.categoria ?? "",
-            locomotora: item.locomotora ?? "",
-            pagina: item.pagina ?? "",
-            lamina: item.lamina ?? "",
-            manual: item.manual ?? "",
+        referencia: item.referencia ?? "",
+        descripcion: item.descripcion ?? "",
+        fabricante: item.fabricante ?? "",
 
-            raw: item
+        cantidad: item.cantidad_instalada ?? 0,
 
-        }));
+        lamina: item.lamina ?? "",
 
+        conjunto: item.conjunto ?? "",
+
+        pagina: item.pagina ?? "",
+
+        compatible: item.compatible_con ?? [],
+
+        foto: item.foto ?? "",
+
+        plano: item.plano_imagen ?? "",
+
+        notas: item.notas ?? ""
+
+    }));
+
+   
+     
     }
 
     search(text) {
