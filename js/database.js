@@ -88,9 +88,11 @@ class RailDatabase {
 
                 item.fabricante.toLowerCase().includes(text) ||
 
-                item.categoria.toLowerCase().includes(text) ||
+                item.conjunto.toLowerCase().includes(text) ||
+              
+                item.compatible.join(" ")
 
-                item.locomotora.toLowerCase().includes(text)
+             
 
             );
 
