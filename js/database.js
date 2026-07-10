@@ -16,7 +16,7 @@ class RailDatabase {
 
         try {
 
-            const response = await fetch("data/railref_database_app_v2.json");
+            const response = await fetch("Data/railref_database_app_v2.json");
 
             if (!response.ok) {
                 throw new Error("No se pudo cargar la base de datos");
